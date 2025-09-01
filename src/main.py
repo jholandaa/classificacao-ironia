@@ -54,9 +54,7 @@ def basic_clean(text: str) -> str:
 train["_text"] = train[TEXT_COL].astype(str).map(basic_clean)
 test["_text"] = test[TEXT_COL].astype(str).map(basic_clean)
 
-# ============================
 # 3. Baseline: TF-IDF + Modelos Lineares
-# ============================
 from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import balanced_accuracy_score
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -128,9 +126,7 @@ if best_name == "linsvm":
 else:
     test_labels = final_model.predict(Xt)
 
-# ============================
 # 4. Salvar submissão
-# ============================
 submission = test[[ID_COL]].copy()
 submission[LABEL_COL.upper()] = test_labels
 
